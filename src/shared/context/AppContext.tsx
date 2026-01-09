@@ -24,6 +24,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 interface AppProviderProps {
   children: ReactNode;
+  instanceId?: string;
   initialConfig?: {
     images?: ImageConfig[];
     width?: number | string;
@@ -44,7 +45,8 @@ function extractNameFromUrl(url: string): string {
 }
 
 export const AppProvider: React.FC<AppProviderProps> = ({ 
-  children, 
+  children,
+  instanceId,
   initialConfig,
   events 
 }) => {
@@ -71,7 +73,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({
 
   // Register global store for external API access - use useLayoutEffect to ensure it's ready immediately
   useLayoutEffect(() => {
-    setGlobalStore({
+    if (!instanceId) return;
+    setGlobalStore(instanceId, {
       images,
       selectedIds: selectedImageIds,
       width,
@@ -81,7 +84,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({
       setSelectedIds: setSelectedImageIds,
       events: events || {},
     });
-  }, [images, selectedImageIds, width, height, showLabels, events]);
+  }, [instanceId, images, selectedImageIds, width, height, showLabels, events]);
 
   // Notify selection changes
   useEffect(() => {

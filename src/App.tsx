@@ -4,6 +4,7 @@ import type { ImageConfig, ImagesComparatorEvents } from './index.tsx'
 import './App.css'
 
 interface AppProps {
+  instanceId?: string;
   initialConfig?: {
     images?: ImageConfig[];
     height?: number | string;
@@ -12,9 +13,9 @@ interface AppProps {
   events?: ImagesComparatorEvents;
 }
 
-function App({ initialConfig, events }: AppProps) {
+function App({ instanceId, initialConfig, events }: AppProps) {
   return (
-    <AppProvider initialConfig={initialConfig} events={events}>
+    <AppProvider instanceId={instanceId} initialConfig={initialConfig} events={events}>
       <Main />
     </AppProvider>
   )
