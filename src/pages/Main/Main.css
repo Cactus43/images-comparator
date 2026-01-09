@@ -1,0 +1,179 @@
+.images-comparator {
+  width: 100%;
+  height: 100%;
+}
+
+/* Comparison Container */
+.comparison-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image Selector Dropdown */
+.image-selector {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 100;
+}
+
+.selector-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.selector-trigger:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.selector-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 240px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.selector-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: grab;
+  transition: background-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+  user-select: none;
+}
+
+.selector-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.selector-item:active {
+  cursor: grabbing;
+}
+
+.selector-item.dragging {
+  opacity: 0.5;
+  background-color: rgba(74, 158, 255, 0.1);
+}
+
+.selector-item.drag-over {
+  background-color: rgba(74, 158, 255, 0.2);
+  border-top: 2px solid #4a9eff;
+}
+
+.drag-handle {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  cursor: grab;
+  transition: color 0.15s ease;
+}
+
+.selector-item:hover .drag-handle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.selector-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #4a9eff;
+  cursor: pointer;
+}
+
+.selector-thumbnail {
+  width: 40px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.selector-label {
+  flex: 1;
+  font-size: 13px;
+  color: #ddd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Single Image */
+.single-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0a;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.single-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.single-image .image-label {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  padding: 6px 14px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: #666;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .selector-dropdown {
+    min-width: 200px;
+  }
+  
+  .selector-thumbnail {
+    width: 32px;
+    height: 24px;
+  }
+}
