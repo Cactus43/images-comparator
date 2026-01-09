@@ -3,10 +3,11 @@ import { Main } from './pages/Main/Main.tsx'
 import type { ImageConfig, ImagesComparatorEvents } from './index.tsx'
 import './App.css'
 
-interface AppProps {
+export interface AppProps {
   instanceId?: string;
   initialConfig?: {
     images?: ImageConfig[];
+    width?: number | string;
     height?: number | string;
     showLabels?: boolean;
   };
